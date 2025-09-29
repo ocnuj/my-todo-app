@@ -91,3 +91,39 @@ form.addEventListener('submit', (e) => {
 
 // 初回レンダー
 render();
+
+let deletedTask = null; // 直前に削除したタスクを保存
+
+function addTask() {
+  const taskInput = document.getElementById("taskInput");
+  const dateInput = document.getElementById("dateInput");
+  const taskText = taskInput.value;
+  const taskDate = dateInput.value;
+
+  if (taskText === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = `${taskText} (${taskDate})`;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "削除";
+  deleteBtn.onclick = function () {
+    deletedTask = li; // 削除する前に保存
+    li.remove();
+  };
+
+  li.appendChild(deleteBtn);
+  document.getElementById("taskList").appendChild(li);
+
+  taskInput.value = "";
+  dateInput.value = "";
+}
+
+function undoDelete() {
+  if (deletedTask) {
+    document.getElementById("taskList").appendChild(deletedTask);
+    deletedTask = null;
+  } else {
+    alert("戻すタスクはありません");
+  }
+}
