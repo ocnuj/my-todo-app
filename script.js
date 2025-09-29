@@ -56,6 +56,11 @@ function render() {
 
     li.appendChild(chk);
     li.appendChild(span);
+    const dateSpan = document.createElement('span');
+    dateSpan.style.fontSize = "12px";
+    dateSpan.style.color = "#6b7280";
+    dateSpan.textContent = todo.date ? `期限: ${todo.date}` : "";
+    li.appendChild(dateSpan);
     li.appendChild(del);
     list.appendChild(li);
   });
@@ -66,10 +71,20 @@ function render() {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const text = input.value.trim();
+  const date = document.getElementById('todo-date').value;
+
   if (!text) return;
-  const todo = { id: Date.now(), text, done: false };
+
+  const todo = {
+    id: Date.now(),
+    text,
+    date: date || "",  // 日付が空なら空文字
+    done: false
+  };
+
   todos.push(todo);
   input.value = '';
+  document.getElementById('todo-date').value = ''; // 入力欄リセット
   save();
   render();
 });
