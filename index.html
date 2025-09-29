@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>シンプル ToDo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>ToDo</h1>
+
+    <form id="todo-form">
+      <input id="todo-input" type="text" placeholder="やることを入力して Enter または「追加」を押す" autocomplete="off" />
+      <button type="submit">追加</button>
+    </form>
+
+    <p id="stats">0 件</p>
+
+    <ul id="todo-list"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
