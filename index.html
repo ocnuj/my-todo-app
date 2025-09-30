@@ -1,27 +1,33 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>シンプル ToDo</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>ToDoアプリ v3.1</title>
+  <style>
+    .done { text-decoration: line-through; color: gray; }
+    .delete-btn { margin-left: 10px; }
+  </style>
 </head>
 <body>
-  <main class="container">
-    <h1>ToDo</h1>
+  <h1>ToDoアプリ</h1>
 
-<form id="todo-form">
-  <input id="todo-input" type="text" placeholder="やることを入力" autocomplete="off" />
-  <input id="todo-date" type="date" />
-  <button type="submit">追加</button>
-</form>
+  <!-- 入力フォーム -->
+  <form id="todo-form">
+    <input id="todo-input" type="text" placeholder="タスクを入力" />
+    <input id="todo-date" type="date" />
+    <button type="submit">追加</button>
+  </form>
 
-    <p id="stats">0 件</p>
+  <!-- タスクリスト -->
+  <ul id="todo-list"></ul>
 
-    <ul id="todo-list"></ul>
-  </main>
+  <!-- 統計 -->
+  <p id="stats"></p>
 
+  <!-- 操作用ボタン -->
   <button onclick="undoDelete()">取り消し</button>
+  <button onclick="exportTodosAsTxt()">.txtに保存</button>
 
   <script src="script.js"></script>
 </body>
